@@ -6,6 +6,8 @@ import (
 
 	"github.com/Stettzy/blog_in_golang/db"
 	"github.com/Stettzy/blog_in_golang/db/migrations"
+	"github.com/Stettzy/blog_in_golang/handlers"
+	"github.com/labstack/echo"
 )
 
 func RunMigrations() error {
@@ -23,7 +25,6 @@ func RunMigrations() error {
 		if err := migration.fn(); err != nil {
 			return fmt.Errorf("failed migration for %s: %w", migration.name, err)
 		}
-
 	}
 
 	return nil
@@ -40,4 +41,17 @@ func main() {
 	if err != nil {
 		log.Fatal("failed to execute: %w", err)
 	}
+
+	api := echo.New()
+
+	// User routes
+	api.POST("/login", handlers.LoginUser)
+	api.POST("/register", handlers.RegisterUser)
+	api.DELETE("/remove", handlers.RemoveUser)
+	api.PUT("/update", handlers.UpdateUser)
+	// Post routes
+	// Tags routes
+	// Comments routes
+
+	api.Start(":8080")
 }

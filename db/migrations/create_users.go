@@ -14,9 +14,9 @@ func CreateUsers() error {
 
 	stmt, err := db.Prepare(`CREATE TABLE IF NOT EXISTS users (
         id INT AUTO_INCREMENT PRIMARY KEY,
-        username VARCHAR(50) NOT NULL,
-        email VARCHAR(100) NOT NULL,
-        password VARCHAR(100) NOT NULL,
+        username VARCHAR(500) NOT NULL,
+        email VARCHAR(500) NOT NULL,
+        password VARCHAR(500) NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )`)
 	if err != nil {
