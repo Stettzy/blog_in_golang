@@ -123,6 +123,6 @@ func RemoveUser(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]int{"deleted_user_id": userID})
 }
 
-func UpdateUser(c echo.Context) (int, error) {
-	return 0, nil
+func UpdateUser(c echo.Context) error {
+	return nil
 }
